@@ -1,0 +1,154 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API para la gestión de productos.",
+    "version": "1.0.0",
+    "title": "API de Productos"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/productos",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Listar todos los productos",
+        "responses": {
+          "200": {
+            "description": "Lista de productos",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Producto"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear un nuevo producto",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "producto",
+            "description": "Producto a crear",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Producto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Producto creado",
+            "schema": {
+              "$ref": "#/definitions/Producto"
+            }
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "summary": "Obtener un producto por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto encontrado",
+            "schema": {
+              "$ref": "#/definitions/Producto"
+            }
+          },
+          "404": {
+            "description": "Producto no encontrado"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar producto por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "producto",
+            "description": "Producto a actualizar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Producto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto actualizado",
+            "schema": {
+              "$ref": "#/definitions/Producto"
+            }
+          },
+          "404": {
+            "description": "Producto no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar producto por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Producto eliminado"
+          },
+          "404": {
+            "description": "Producto no encontrado"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Producto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "precio": {
+          "type": "number"
+        },
+        "categoria": {
+          "type": "string"
+        },
+        "stock": {
+          "type": "number"
+        },
+        "fechaRegistro": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["nombre", "precio", "categoria", "stock"]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "api-productos",
+  "version": "1.0.0",
+  "description": "API REST para la gestión de productos",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^6.18.0",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "author": "Erick Oliver",
+  "license": "ISC"
+}
