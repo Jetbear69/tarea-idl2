@@ -35,12 +35,7 @@ api-productos
    npm install
    ```
 
-3. Configura las variables de entorno en el archivo `.env`:
-   ```
-   MONGODB_URI=<tu_cadena_de_conexión_a_mongodb>
-   ```
-
-4. Inicia la aplicación:
+3. Inicia la aplicación:
    ```
    npm start
    ```
